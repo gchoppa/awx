@@ -3085,6 +3085,8 @@ class WorkflowJobTemplateLaunch(WorkflowsEnforcementMixin, RetrieveAPIView):
                 data['extra_vars'] = extra_vars
             if obj.ask_inventory_on_launch:
                 data['inventory'] = obj.inventory_id
+            else:
+                data.pop('inventory', None)
         return data
 
     def post(self, request, *args, **kwargs):
